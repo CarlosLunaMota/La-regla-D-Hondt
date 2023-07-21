@@ -1,5 +1,4 @@
-# La regla D'Hondt
-*La regla D'Hondt com mai abans te l'havien explicat!*
+# La regla D'Hondt com mai te l'havien explicat!
 
 Cada cop que hi ha eleccions passa el mateix: Mitjans de comunicació i divulgadors de tota mena s'afanyen a explicar les pintoresques peculiaritats de la [**regla D'Hondt**](https://ca.wikipedia.org/wiki/Regla_D%27Hondt), aquest sistema arcà que es fa servir per repartir els escons a molts països.
 
@@ -10,10 +9,6 @@ I cada cop l’expliquen malament. Així que anem a veure si podem explicar què
 ## Tenim un problema
 
 La regla D’Hondt soluciona un problema molt concret:
-
-> Donats N conjunts i M elements, volem repartir els M elements entre els N conjunts de la manera més proporcional possible a una sèrie de valors V¹, V², V³, … Vⁿ.
-
-O, parlant més clar:
 
 > Donats uns partits polítics i una certa quantitat d’escons, volem repartir els escons entre els partits polítics de la manera més proporcional possible als vots que ha obtingut cada partit a les eleccions.
 
@@ -100,3 +95,43 @@ Veient aquesta taula és evident que el preu que fa que es *venguin* exactament 
 | **D**  | 1.500.000 |                          1 | 1.500.000 - (1 · 800.000) = 700.000 |
 
 Ara bé, la pregunta és... Com he fet la taula anterior? O, més concretament, com he escollit els nombres que apareixen a la columna **Preu**?
+
+## Oferta i demanda = regla D'Hondt
+
+Doncs resulta que el que normalment s'entén per regla D'Hondt és, en realitat, un algorisme per resoldre el problema de trobar el preu just per *vendre* exactament els escons disponibles.
+
+**Per exemple:** Fem una taula amb 4 columnes (una per cada partit) i 12 fileres (una per cada escó). A la filera N posem els vots de cada partit dividit per N. Aquest valor serà el preu màxim que podria pagar cada partit polític si volgués comprar N vots.
+
+|        | **A**     | **B** 	    | **C**    | **D** 	   |
+| :----: | :--------:| :--------:| :--------:| :--------:|
+| **1**  | 4.000.000 | 3.500.000 | 2.000.000 | 1.500.000 |
+| **2**  | 2.000.000 | 1.750.000 | 1.000.000 |   750.000 |
+| **3**  | 1.333.333 | 1.166.667 |   666.667 |   500.000 |
+| **4**  | 1.000.000 |   875.000 |   500.000 |   375.000 |
+| **5**  |   800.000 |   700.000 |   400.000 |   300.000 |
+| **6**  |   666.667 |   583.333 |   333.333 |   250.000 |
+| **7**  |   571.429 |   500.000 |   285.714 |   214.286 |
+| **8**  |   500.000 |   437.500 |   250.000 |   187.500 |
+| **9**  |   444.444 |   388.889 |   222.222 |   166.667 |
+| **10** |   400.000 |   350.000 |   200.000 |   150.000 |
+| **11** |   363.636 |   318.182 |   181.818 |   136.364 |
+| **12** |   333.333 |   291.667 |   166.667 |   125.000 |
+
+A continuació, queda't només amb amb els 12 números més grans de la taula. De tots aquests, el més petit (800.000) és el valor *just* que fa que es *venguin*, exactament, els 12 escons disponibles.
+
+|        | **A**       | **B**   	   | **C**       | **D**   	   |
+| :----: | :----------:| :----------:| :----------:| :----------:|
+| **1**  | 4.000.000   | 3.500.000   | 2.000.000   | 1.500.000   |
+| **2**  | 2.000.000   | 1.750.000   | 1.000.000   | ~~750.000~~ |
+| **3**  | 1.333.333   | 1.166.667   | ~~666.667~~ | ~~500.000~~ |
+| **4**  | 1.000.000   |   875.000   | ~~500.000~~ | ~~375.000~~ |
+| **5**  | **800.000** | ~~700.000~~ | ~~400.000~~ | ~~300.000~~ |
+| **6**  | ~~666.667~~ | ~~583.333~~ | ~~333.333~~ | ~~250.000~~ |
+| **7**  | ~~571.429~~ | ~~500.000~~ | ~~285.714~~ | ~~214.286~~ |
+| **8**  | ~~500.000~~ | ~~437.500~~ | ~~250.000~~ | ~~187.500~~ |
+| **9**  | ~~444.444~~ | ~~388.889~~ | ~~222.222~~ | ~~166.667~~ |
+| **10** | ~~400.000~~ | ~~350.000~~ | ~~200.000~~ | ~~150.000~~ |
+| **11** | ~~363.636~~ | ~~318.182~~ | ~~181.818~~ | ~~136.364~~ |
+| **12** | ~~333.333~~ | ~~291.667~~ | ~~166.667~~ | ~~125.000~~ |
+
+Quan la gent veu aquesta taula
