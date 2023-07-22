@@ -133,11 +133,11 @@ A continuació, cal quedar-nos amb els 12 números més grans de la taula (perqu
 
 Ara podem entendre d'on han sortit els *preus* de la taula **Preu / Escons *venuts***, són els nombres que apareixen a la taula de la regla D'Hondt i tenen la propietat de ser els valors que marquen el límit entre assignar K escons i assignar-ne K+1.
 
-**Per exemple:** Mirant la taula anterior és fàcil veure que si el *preu* fos 800.001 vots, es *vendrien* 11 escons mentre que si és 800.000, se'n *vendran* 12. També podem veure casos on el salt és més gran: si el *preu* és 1.000.000 vots, es *vendran* 8 escons, mentre que, si el preu baixa a 1.000.000, se'n vendran 10. Aquests salts són molt poc probables a la pràctica, on és gairebé impossible que un mateix nombre aparegui diverses vegades a la taula.
+**Per exemple:** Mirant la taula anterior és fàcil veure que si el *preu* fos 800.001 vots, es *vendrien* 11 escons mentre que si és 800.000, se'n *vendran* 12. També podem veure casos on el salt és més gran: si el *preu* és 1.000.001 vots, es *vendran* 8 escons, mentre que, si el preu baixa a 1.000.000, se'n vendran 10. Aquests salts són molt poc probables a la pràctica, on és gairebé impossible que un mateix nombre aparegui diverses vegades a la taula.
 
 ## Conseqüències de fer servir la llei de l'oferta i la demanda
 
-En contra del que sovint es creu, **amb aquest mètode tots els partits estan comprant els escons al mateix preu** (800.000 vots, en l'exemple). El que passa és que gairebé tots els partits (tots menys el que té el *preu just* a la seva columna) desperdicien part dels seus vots en fer-ho. Aquest efecte és més acusat com més minoritari és el partit polític, perquè els vots desperdiciats en termes absoluts suposaran un major percentatge del seu pes electoral en termes relatius.
+En contra del que sovint es creu, **amb aquest mètode tots els partits estan comprant els escons al mateix preu** (800.000 vots, en l'exemple). El que passa és que gairebé tots els partits (tots menys el que té el *preu just* a la seva columna) desperdicien part dels seus vots en fer-ho. Aquest efecte és més acusat com més minoritari és el partit polític, perquè els vots desperdiciats (en termes absoluts) suposaran un major percentatge del seu pes electoral (en termes relatius).
 
 També és fàcil observar que aquest mètode de repartiment d'escons penalitza les coalicions formades *a posteriori*. El partit **B** té 3.500.000 vots i la coalició **C+D** també, però el partit **B** pot aprofitar els 400.000 vots que desperdicia **C** i els 700.000 vots que desperdicia **D** per comprar un altre escó, obtenint-ne 4 en total, mentre que **C+D** s'ha de conformar amb 3 perquè han concorregut a les eleccions per separat.
 
