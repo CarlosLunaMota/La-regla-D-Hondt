@@ -12,7 +12,7 @@ La regla D’Hondt soluciona un problema molt concret:
 
 > Donats uns partits polítics i una certa quantitat d’escons, volem repartir els escons entre els partits polítics de la manera més proporcional possible als vots que ha obtingut cada partit a les eleccions.
 
-I, és clar, quan es parla de repartiment proporcional el primer que ens ve al cap és la [**regla de tres**](https://ca.wikipedia.org/wiki/Regla_de_tres). Amb això deu haver-hi prou, no?
+I, és clar, quan es parla de repartiment proporcional, el primer que ens ve al cap és la [**regla de tres**](https://ca.wikipedia.org/wiki/Regla_de_tres). Amb això deu haver-hi prou, no?
 
 Doncs no! La regla de tres només funciona per aquells problemes on pots tallar les coses com vulguis i, malauradament, els escons només els pots repartir sencers. Aquesta petita diferència fa que calgui aplicar mètodes molt més complicats.
 
@@ -26,12 +26,12 @@ Malgrat no poder aplicar la regla de tres tal qual, és molt temptador mirar d�
 | :----: | :-------: | :----------------------------------: | :---------: | :------------: | :-----: |
 | **A**  |   600.000 |   600.000 · 10 / 1.400.000 =  4,2857 |           4 |         0,2857 |       4 |
 | **B**  |   600.000 |   600.000 · 10 / 1.400.000 =  4,2857 |           4 |         0,2857 |       4 |
-| **C**  |   200.000 |   200.000 · 10 / 1.400.000 =  1,4286 |           1 |    **0,4286**  | 1+**1** |
+| **C**  |   200.000 |   200.000 · 10 / 1.400.000 =  1,4286 |           1 |     **0,4286** | 1+**1** |
 | Total  | 1.400.000 | 1.400.000 · 10 / 1.400.000 = 10,0000 |           9 |              1 |      10 |
 
 Després del truncament **A** s'emporta 4 escons, **B** s'emporta 4 escons i **C** s'emporta 1 escó. Qui s'endurà l'escó que queda? Doncs el partit **C**, perquè és el partit amb un major residu decimal.
 
-Fàcil de fer i d'entendre... sembla que ja ho tindríem, oi? Doncs no!
+Fàcil de fer i d'entendre… sembla que ja ho tindríem, oi? Doncs no!
 
 ## El primer intent falla
 
@@ -92,18 +92,18 @@ Veient aquesta taula és evident que el preu que fa que es *venguin* exactament 
 
 | Partit | Vots      | Escons que pot comprar | Vots desaprofitats                  |
 | :----: | :-------: | :--------------------: | :---------------------------------- |
-| **A**  | 4.000.000 |                      5 | 4.000.000 - (5 · 800.000) =       0 |
+| **A**  | 4.000.000 |                      5 | 4.000.000 - (5 · 800.000) =   0     |
 | **B**  | 3.500.000 |                      4 | 3.500.000 - (4 · 800.000) = 300.000 |
 | **C**  | 2.000.000 |                      2 | 2.000.000 - (2 · 800.000) = 400.000 |
 | **D**  | 1.500.000 |                      1 | 1.500.000 - (1 · 800.000) = 700.000 |
 
-Ara bé, ja hem vist que calcular quants escons es reparteixen a un preu donat és fàcil... però la pregunta és: com podem trobar ràpidament el preu *just* que ens permetrà vendre exactament els escons disponibles? D'on han sortit els *preus* de la taula anterior?
+Ara bé, ja hem vist que calcular quants escons es reparteixen a un preu donat és fàcil… però la pregunta és: com podem trobar ràpidament el preu *just* que ens permetrà vendre exactament els escons disponibles? D'on han sortit els *preus* de la taula anterior?
 
 ## Regla D'Hondt = Llei de l'oferta i la demanda
 
 Doncs resulta que **el que normalment s'entén per regla D'Hondt és, en realitat, un algorisme per resoldre el problema de trobar el preu just per *vendre* exactament els escons disponibles.**
 
-Recordem com funcionava tot seguint amb l'exemple anterior: Cal fer una taula amb 4 columnes (una per cada partit) i 12 fileres (una per cada escó). A la filera N posem els vots de cada partit dividits per N. **Aquest valor serà el preu màxim que podria pagar cada partit polític si volgués comprar N vots**.
+Recordem com funcionava: Cal fer una taula amb 4 columnes (una per cada partit) i 12 fileres (una per cada escó). A la filera N posem els vots de cada partit dividits per N. **Aquest valor serà el preu màxim que podria pagar cada partit polític si volgués comprar N vots**.
 
 |        | **A**     | **B**     | **C**     | **D**     |
 | :----: | :-------: | :-------: | :-------: | :-------: |
@@ -120,7 +120,7 @@ Recordem com funcionava tot seguint amb l'exemple anterior: Cal fer una taula am
 | **11** |   363.636 |   318.182 |   181.818 |   136.364 |
 | **12** |   333.333 |   291.667 |   166.667 |   125.000 |
 
-A continuació, cal quedar-nos amb amb els 12 números més grans de la taula (perquè tenim 12 escons a repartir). El més petit d'aquests, 800.000, serà el valor *just* que fa que es *venguin*, exactament, els 12 escons disponibles.
+A continuació, cal quedar-nos amb els 12 números més grans de la taula (perquè tenim 12 escons a repartir). El més petit d'aquests, 800.000, serà el valor *just* que fa que es *venguin*, exactament, els 12 escons disponibles.
 
 |        | **A**       | **B**       | **C**       | **D**       |
 | :----: | :---------: | :---------: | :---------: | :---------: |
@@ -141,6 +141,6 @@ En contra del que sovint es creu, **amb aquest mètode tots els partits estan co
 
 També és fàcil observar que aquest mètode de repartiment d'escons penalitza les coalicions formades *a posteriori*. El partit **B** té 3.500.000 vots i la coalició **C+D** també, però el partit **B** pot aprofitar els 400.000 vots que desperdicia **C** i els 700.000 vots que desperdicia **D** per comprar un altre escó, obtenint-ne 4 en total, mentre que **C+D** s'ha de conformar amb 3 perquè han concorregut a les eleccions per separat.
 
-Tots dos efectes combinats acostumen a justificar la creença de que la regla D'Hondt afavoreix als partits majoritaris, però en realitat són una conseqüència bàsica de la llei de l'oferta i la demanda i les [**economies d'escala**](https://ca.wikipedia.org/wiki/Economia_d%27escala). Això té més relevancia a les circumscripcions petites, on el [**vot útil**](https://ca.wikipedia.org/wiki/Vot_%C3%BAtil) pot suposar una gran diferència i val la pena fer un cop d'ull a quin partit està més a prop d'aconseguir un altre escó.
+Tots dos efectes combinats acostumen a justificar la creença que la regla D'Hondt afavoreix als partits majoritaris, però en realitat són una conseqüència bàsica de la llei de l'oferta i la demanda i les [**economies d'escala**](https://ca.wikipedia.org/wiki/Economia_d%27escala). Això té més rellevància a les circumscripcions petites, on el [**vot útil**](https://ca.wikipedia.org/wiki/Vot_%C3%BAtil) pot suposar una gran diferència i val la pena donar un cop d'ull a quin partit està més a prop d'aconseguir un altre escó.
 
-**Per exemple:** Qui està en millors condicions de robar-li el cinqué escó al partit **A** és el partit més minoritari de tots, **D**, que només necessitaria 100.001 vots més per fer-ho. Això va en contra de la creença popular de que la regla D'Hondt fa que votar a partits minoritaris sigui inútil.
+**Per exemple:** Qui està en millors condicions de robar-li el cinquè escó al partit **A** és el partit més minoritari de tots, **D**, que només necessitaria 100.001 vots més per fer-ho. Això va en contra de la creença popular que la regla D'Hondt fa que votar a partits minoritaris sigui inútil.
