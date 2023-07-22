@@ -94,13 +94,13 @@ Veient aquesta taula és evident que el preu que fa que es *venguin* exactament 
 | **C**  | 2.000.000 |                      2 | 2.000.000 - (2 · 800.000) = 400.000 |
 | **D**  | 1.500.000 |                      1 | 1.500.000 - (1 · 800.000) = 700.000 |
 
-Ara bé, la pregunta és... Com hem fet la taula anterior? O, més concretament, com hem escollit els nombres que apareixen a la columna **Preu**?
+Ara bé, ja hem vist que calcular quants escons es reparteixen a un preu donat és fàcil... però la pregunta és: com podem trobar ràpidament el preu *just* que ens permetrà vendre exactament els escons disponibles? D'on han sortit els *preus* de la taula anterior?
 
 ## Regla D'Hondt = Llei de l'oferta i la demanda
 
 Doncs resulta que **el que normalment s'entén per regla D'Hondt és, en realitat, un algorisme per resoldre el problema de trobar el preu just per *vendre* exactament els escons disponibles.**
 
-**Per exemple:** Fem una taula amb 4 columnes (una per cada partit) i 12 fileres (una per cada escó). A la filera N posem els vots de cada partit dividit per N. Aquest valor serà el preu màxim que podria pagar cada partit polític si volgués comprar N vots.
+Recordem com funcionava, tot seguint amb l'exemple anterior. Cal fer una taula amb 4 columnes (una per cada partit) i 12 fileres (una per cada escó). A la filera N posem els vots de cada partit dividits per N. **Aquest valor serà el preu màxim que podria pagar cada partit polític si volgués comprar N vots**.
 
 |        | **A**     | **B**     | **C**     | **D**     |
 | :----: | :-------: | :-------: | :-------: | :-------: |
@@ -117,10 +117,10 @@ Doncs resulta que **el que normalment s'entén per regla D'Hondt és, en realita
 | **11** |   363.636 |   318.182 |   181.818 |   136.364 |
 | **12** |   333.333 |   291.667 |   166.667 |   125.000 |
 
-A continuació, queda't només amb amb els 12 números més grans de la taula. De tots aquests, el més petit (800.000) és el valor *just* que fa que es *venguin*, exactament, els 12 escons disponibles.
+A continuació, cal quedar-nos amb amb els 12 números més grans de la taula (perquè tenim 12 escons a repartir). El més petit d'aquests, , 800.000, serà el valor *just* que fa que es *venguin*, exactament, els 12 escons disponibles.
 
-|        | **A**     | **B**     | **C**     | **D**     |
-| :----: | :-------: | :-------: | :-------: | :-------: |
+|        | **A**       | **B**       | **C**       | **D**       |
+| :----: | :---------: | :---------: | :---------: | :---------: |
 | **1**  | 4.000.000   | 3.500.000   | 2.000.000   | 1.500.000   |
 | **2**  | 2.000.000   | 1.750.000   | 1.000.000   | ~~750.000~~ |
 | **3**  | 1.333.333   | 1.166.667   | ~~666.667~~ | ~~500.000~~ |
@@ -134,4 +134,16 @@ A continuació, queda't només amb amb els 12 números més grans de la taula. D
 | **11** | ~~363.636~~ | ~~318.182~~ | ~~181.818~~ | ~~136.364~~ |
 | **12** | ~~333.333~~ | ~~291.667~~ | ~~166.667~~ | ~~125.000~~ |
 
-Quan la gent veu aquesta taula
+Ara podem entendre d'on han sortit els *preus* de la taula **Preu / Escons *venuts***, són els nombres que apareixen a la taula de la regla D'Hondt i tenen la propietat de ser els valors que marquen el límit entre assignar K escons i assignar-ne K+1.
+
+**Per exemple:** Mirant la taula anterior és fàcil veure que si el *preu* fos 800.001 vots, es *vendrien* 11 escons mentre que si és 800.000, se'n *vendran* 12. També podem veure casos on el salt és més gran: si el *preu* és 1.000.000 vots, es *vendran* 8 escons, mentre que si el preu baixa a 1.000.000, ja se'n vendran 10.
+
+## Conseqüències de fer servir la llei de l'oferta i la demanda per assignar escons
+
+En contra del que sovint es creu, **amb aquest mètode tots els partits estan comprant els escons al mateix preu** (800.000 vots, en l'exemple). El que passa és que gairebé tots els partits (tots menys el que té el *preu just* a la seva columna) desperdicien part dels seus vots en fer-ho. Aquest efecte és més acusat com més minoritari és el partit polític, perquè aquests vots desperdiciats (en termes absoluts) suposaran un major percentatge del seu total (en termes relatius).
+
+També és fàcil observar que aquest mètode de repartiment d'escons penalitza les coalicions formades *a posteriori*. El partit **B** té 3.500.000 vots i la coalició **C+D** també, però el partit **B** pot aprofitar els 400.000 vots que desperdicia **C** i els 700.000 vots que desperdicia **D** per comprar un altre escó, obtenint-ne 4 en total, mentre que **C+D** s'ha de conformar amb 3 perquè han concorregut a les eleccions per separat.
+
+Tots dos efectes combinats acostumen a justificar la creença de que la regla D'Hondt afavoreix als partits majoritaris, però en realitat són una conseqüència bàsica de la llei de l'oferta i la demanda i les [**economies d'escala**](https://ca.wikipedia.org/wiki/Economia_d%27escala). En una circumscripció gran l'importància relativa de guanyar o perdre un escó és molt menor i els resultats acostumen a reflectir fidelment la voluntat expressada a les urnes amb independència d'aquests detalls. Però en una circumscripció petita el [**vot útil**](https://ca.wikipedia.org/wiki/Vot_%C3%BAtil) pot suposar una gran diferència i val la pena fer un cop d'ull a quin partit està més a prop d'aconseguir un altre escó.
+
+**Per exemple:** Qui està en millors condicions de robar-li el cinqué escó al partit **A** és el partit més minoritari de tots, **D**, que només necessitaria 100.001 vots més per fer-ho. Això va en contra de la creença popular de que la regla D'Hondt fa que votar a partits minoritaris sigui inútil.
