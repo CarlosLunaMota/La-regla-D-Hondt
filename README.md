@@ -101,7 +101,7 @@ Ara bé, ja hem vist que calcular quants escons es reparteixen a un preu donat �
 
 ## Regla D'Hondt = Llei de l'oferta i la demanda
 
-Doncs resulta que **el que normalment s'entén per regla D'Hondt és, en realitat, un algorisme per resoldre el problema de trobar el preu just per *vendre* exactament els escons disponibles.**
+Doncs resulta que **el que normalment s'entén per regla D'Hondt és, en realitat, un algorisme per resoldre el problema de trobar el preu just per *vendre* exactament els escons disponibles fent servir la llei de l'oferta i la demanda.**
 
 Recordem com funcionava: Cal fer una taula amb 4 columnes (una per cada partit) i 12 fileres (una per cada escó). A la filera N posem els vots de cada partit dividits per N. **Aquest valor serà el preu màxim que podria pagar cada partit polític si volgués comprar N vots**.
 
